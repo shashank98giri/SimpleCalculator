@@ -135,12 +135,13 @@ public class UserInterface {
 					
 				}
 				catch(Exception e1) {
-					text.setText("Wrong Input");
-					try{Thread.sleep(3000);}
+					
+					try{text.setText("Wrong Input");Thread.sleep(3000);text.setText("");
+					text.setText("");}
 					catch(InterruptedException e2) {
 						e2.printStackTrace();
 					}
-					text.setText("");
+					
 				}
 				finally {
 					sample=text.getText();operation="";}
