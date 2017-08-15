@@ -100,8 +100,72 @@ public class UserInterface {
 		controlPanel.add(demo);
 		
 		mainFrame.setVisible(true);
+		text.addKeyListener(new KeyBoardListener());
 		
 	}
+	private class KeyBoardListener implements KeyListener{
+		public void keyPressed(KeyEvent e) {
+			
+			int n=e.getKeyCode();
+			if(n==KeyEvent.VK_MULTIPLY||n==KeyEvent.VK_MINUS||n==KeyEvent.VK_DIVIDE||n==KeyEvent.VK_ADD) {
+				number1=sample;
+				
+				sample="";
+				switch(n) {
+				case KeyEvent.VK_MULTIPLY:operation="x";break;
+				case KeyEvent.VK_MINUS:operation="-";break;
+				case KeyEvent.VK_DIVIDE:operation="/";break;
+				
+				case KeyEvent.VK_ADD:operation="+";
+				
+				
+				}
+				
+			}
+			else if(n==KeyEvent.VK_ENTER) {
+				
+				
+				double result=0;
+				try {
+					
+					double num1=Double.parseDouble(number1.trim());
+					double num2=Double.parseDouble(sample.trim());
+					switch(operation.charAt(0)) {
+					case '+':result=num1+num2;break;
+					case '-':result=num1-num2;break;
+					case '/':result=num1/num2;break;
+					case 'x':result=num1*num2;break;
+					}
+					if(result==(int)result)
+					text.setText((result+"").substring(0, (result+"").length()-2));
+					else text.setText(result+"");
+					
+				}
+				catch(Exception e1) {
+					
+					try{text.setText("Wrong Input");Thread.sleep(3000);text.setText("");
+					text.setText("");}
+					catch(InterruptedException e2) {
+						e2.printStackTrace();
+					}
+					
+				}
+				finally {
+					number1=text.getText();operation="";}
+			}
+			else if(n==KeyEvent.VK_BACK_SPACE) {
+				if(!number1.isEmpty()&&text.getText().length()<number1.length())sample=text.getText();
+			}
+			else{
+				sample+=e.getKeyChar();
+			}}
+			
+				
+			
+		public void keyReleased(KeyEvent e) {}
+		public void keyTyped(KeyEvent e) {}
+	}
+	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String s=e.getActionCommand();
