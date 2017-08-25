@@ -9,7 +9,5 @@ This is my first project using **_Swing Gui_** on Github.
  - Run the code and see the Calculator Interface visible.
  - You can perform simple binary operations with integers and decimals and obtain results.
  
-P.S The code has only Buttons activated and typing from the keyboard would not help. So you have to click on the individual buttons to do 
-calculations.This is a simple yet useful project to do some minor calculations.
- 
+The calculator works well for binary operations and some extra features are also now enabled. Check to find out.
  
